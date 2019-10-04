@@ -1,3 +1,4 @@
+conda activate wsdm_spotify
 cd boosing
 
 #already run (creates file /mnt/idms/projects/recsys2018/WSDM/data/all_tracks.pickle.gz)
@@ -5,3 +6,5 @@ python compress_track_info.py /mnt/idms/projects/recsys2018/WSDM/data 20
 
 #run feature generation (mostly copies from run_tiny.sh, throws a few error at the end, but otherwise ok):
 ./run_feature_generation_tiny.sh /mnt/idms/projects/recsys2018/WSDM/data /mnt/idms/fbobee/misc/190927_wsdm_spotify_features
+
+#export_csv: https://apple.github.io/turicreate/docs/api/generated/turicreate.SFrame.export_csv.html#turicreate.SFrame.export_csv
