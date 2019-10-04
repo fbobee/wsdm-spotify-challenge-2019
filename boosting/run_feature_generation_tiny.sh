@@ -6,9 +6,9 @@ echo $EXPERIMENT_DIR
 echo $MAX_THREADS
 
 echo "Track statistics calculation STARTED"
-python calculate_track_stats.py $DATA_DIR $EXPERIMENT_DIR $MAX_THREADS 2018-09-18 2018-09-18 0 first
-python calculate_track_stats.py $DATA_DIR $EXPERIMENT_DIR $MAX_THREADS 2018-09-18 2018-09-18 0 second
-python calculate_track_stats.py $DATA_DIR $EXPERIMENT_DIR $MAX_THREADS 2018-09-18 2018-09-18 0 both
+#python calculate_track_stats.py $DATA_DIR $EXPERIMENT_DIR $MAX_THREADS 2018-09-18 2018-09-18 0 first
+#python calculate_track_stats.py $DATA_DIR $EXPERIMENT_DIR $MAX_THREADS 2018-09-18 2018-09-18 0 second
+#python calculate_track_stats.py $DATA_DIR $EXPERIMENT_DIR $MAX_THREADS 2018-09-18 2018-09-18 0 both
 echo "Track statistics calculation DONE"
 
 echo "Feature engineering for GBT STARTED"
