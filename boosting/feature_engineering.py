@@ -130,6 +130,8 @@ session_data = batch_join(session_data, track_means, ["session_code"])
 del track_means
 
 var_dict = dict(zip(track_feats, track_feats_variance))
+for c in session_data.column_names():
+      session_data[c] = session_data[c].fillna(0)
 session_data["dist_from_sess_mean"] = get_dists(session_data, track_feats, var_dict)
 session_data = session_data.remove_columns(["%s_MEAN" % col for col in track_feats])
 
