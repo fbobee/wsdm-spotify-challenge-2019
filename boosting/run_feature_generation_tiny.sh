@@ -1,3 +1,4 @@
+set -e #halt on error
 DATA_DIR=$1
 EXPERIMENT_DIR=$2
 MAX_THREADS=20
