@@ -136,6 +136,7 @@ session_data["dist_from_sess_mean"] = get_dists(session_data, track_feats, var_d
 session_data = session_data.remove_columns(["%s_MEAN" % col for col in track_feats])
 
 print("## v.) aggregations for total session")
+print(sorted(session_data.column_names()))
 
 agg_cols_total = session_data.column_names().copy()
 session_cols = ['session_position', 'session_length', 'context_switch',
@@ -147,7 +148,13 @@ session_cols = ['session_position', 'session_length', 'context_switch',
        'hist_user_behavior_reason_start_code', 'context_type_code']
 for col in session_cols:
     agg_cols_total.remove(col)
+    
+cols_to_remove = ["track_uri" , "track_name" , "artist" , "release_date_estimate" , "album_name"]
 
+for col in cols_to_remove:
+    agg_cols_total.remove(col)
+    
+print(sorted(agg_cols_total))
 def session_aggr(sf, cols, key="session_code"):
     mean_operations = {("%s_mean" % col): agg.MEAN(col) for col in cols}
     std_operations = {("%s_std" % col): agg.STD(col) for col in cols}
@@ -227,6 +234,9 @@ agg_cols_first.remove("session_code")
 agg_cols_first.remove("session_position")
 agg_cols_first.remove("session_length")
 agg_cols_first.remove("position_over_length")
+
+for col in cols_to_remove: #remove text columns
+    agg_cols_first.remove(col)
 
 first_part_stats = session_aggr(first_part_data, agg_cols_first)
 
