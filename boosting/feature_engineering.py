@@ -200,7 +200,9 @@ excluded = ['context_switch', 'no_pause_before_play', 'short_pause_before_play',
 for col in excluded:
     eval_enabled_cols.remove(col)
 
-first_part_data, second_part_data = separate_session(session_data, eval_enabled_cols)
+#first_part_data, second_part_data = separate_session(session_data, eval_enabled_cols)
+first_part_data = session_data.filter_by(list(range(11)), "session_position")
+second_part_data = session_data[eval_enabled_cols].filter_by([11, 12], "session_position")
 
 print("## viii.) Label refactor")
 
@@ -242,14 +244,14 @@ first_part_stats = session_aggr(first_part_data, agg_cols_first)
 
 print("## 4.) Export first part")
 
-first_part_data = batch_join(first_part_data, session_stats, keys="session_code")
-first_part_data = first_part_data.sort(["session_code","session_position"])
-print(first_part_data.shape)
-first_part_data.save("%s/first_part_sess" % folder, format='binary')
-first_part_data.export_csv("%s/first_part_sess_csv" % folder)
+#first_part_data = batch_join(first_part_data, session_stats, keys="session_code")
+#first_part_data = first_part_data.sort(["session_code","session_position"])
+#print(first_part_data.shape)
+#first_part_data.save("%s/first_part_sess" % folder, format='binary')
+#first_part_data.export_csv("%s/first_part_sess_csv" % folder)
 
 print("#### free memory")
-del first_part_data
+#del first_part_data
 
 print("# 5.) Export second part")
 
